@@ -1,57 +1,28 @@
-<!-- Home slideder-->
-<div id="home-slider">
-    <div class="row">
-        <div class="col-sm-12 header-top-right clearfix">
-            <div class="homeslider">
-                <ul class="owl-carousel-banner">
-                    <?php foreach ($sliders as $s): ?>
-                    <li>
-                        <a href="<?php echo !empty($s['link']) ? $s['link'] : '#';?>">
-                            <img src="<?php echo $s['image'];?>" alt="<?php echo $s['name'];?>" />
-                        </a>
-                    </li>
-                    <?php endforeach; ?>
-                </ul>
+<div class="slider-area">
+    <div class="slider-active owl-carousel">
+        <div class="single-slider pt-125 pb-130 bg-img" style="background-image:url(<?php echo $BASE_URL;?>/images/slider/1.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="slider-content slider-animated-1 text-center">
+                            <h1>Huge Sale</h1>
+                            <h2>koparion</h2>
+                            <h3>Now starting at £99.00</h3>
+                            <a href="#">Shop now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slider slider-h1-2 pt-215 pb-100 bg-img" style="background-image:url(<?php echo $BASE_URL;?>/images/slider/2.jpg);">
+            <div class="container">
+                <div class="slider-content slider-content-2 slider-animated-1">
+                    <h1>We can help get your</h1>
+                    <h2>Books in Order</h2>
+                    <h3>and Accessories</h3>
+                    <a href="#">Contact Us Today!</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    var slider = $(".owl-carousel-banner").owlCarousel({
-        dots: false,
-        nav: true,
-        lazyLoad: true,
-        navText: ['‹', '›'],
-        items: 1,
-        responsive: {"0": {"items": 1}, "600": {"items": 1}, "768": {"items": 1}, "992": {"items": 1}},
-        margin: 0,
-        autoplay: true,
-        loop: true
-    });
-    slider.on('changed.owl.carousel', function (event) {
-        $(".owl-carousel-banner").find('img').each(function () {
-            $(this).attr('src', $(this).attr('data-src-slider'));
-        })
-    })
-    if ($(window).width() < 767) {
-        $('.homeslider .owl-item img').css({'max-width': $(window).width(), 'margin-left': '15px'});
-    }
-</script>
-<style>
-    @media screen and (max-width: 767px){
-        .header-top-right{
-            margin-left: 0px !important;
-            width:100% !important;
-        }
-        .option2 .header-top-right .homeslider {
-            width:100% !important;
-            margin:0px !important;
-        }
-        .homeslider .owl-item{
-            max-width:100% !important;
-        }
-    }
-</style>
-
-<!-- END Home slideder-->
-
