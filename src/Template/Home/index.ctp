@@ -73,8 +73,8 @@
                 <div class="banner-img-2">
                     <a href="#"><img src="<?php echo $BASE_URL; ?>/images/banner/5.jpg" alt="banner" /></a>
                     <div class="banner-text">
-                        <h3>G. Meyer Books & Spiritual Traveler Press</h3>
-                        <h2>Sale up to 30% off</h2>
+                        <h3>Khuyến mãi HOT</h3>
+                        <h2>Giảm giá lên tới 30% trên tổng hóa đơn</h2>
                     </div>
                 </div>
             </div>
@@ -122,24 +122,6 @@
             </div>
             <?php endfor; ?>
 
-        </div>
-    </div>
-</div>
-<!-- new-book-area-start -->
-<!-- banner-static-area-start -->
-<div class="banner-static-area bg ptb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="banner-shadow-hover xs-mb">
-                    <a href="#"><img src="<?php echo $BASE_URL; ?>/images/banner/8.jpg" alt="banner" /></a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="banner-shadow-hover">
-                    <a href="#"><img src="<?php echo $BASE_URL; ?>/images/banner/9.jpg" alt="banner" /></a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -254,43 +236,3 @@
     </div>
 </div>
 <!-- recent-post-area-end -->
-<!-- social-group-area-start -->
-<div class="social-group-area ptb-60">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="section-title-3">
-                    <h3>Latest Tweets</h3>
-                </div>
-                <div class="twitter-content">
-                    <div class="twitter-icon">
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                    </div>
-                    <div class="twitter-text">
-                        <p>
-                            Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum notare quam
-                        </p>
-                        <a href="#">koparion</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="section-title-3">
-                    <h3>Stay Connected</h3>
-                </div>
-                <div class="link-follow">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="#"><i class="fa fa-flickr"></i></a></li>
-                        <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- social-group-area-end -->

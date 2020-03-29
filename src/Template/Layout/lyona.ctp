@@ -9,7 +9,7 @@ $_time = time();
 <!DOCTYPE html>
 <html lang="vi" itemscope itemtype="http://schema.org/Article" prefix="og: http://ogp.me/ns#">
     <head>
-        <link rel="shortcut icon" href="<?php echo $BASE_URL; ?>/favicon.ico" type="image/png">
+        <link rel="shortcut icon" href="<?php echo $BASE_URL; ?>/images/logo.jpg" type="image/png">
         <meta charset="utf-8">
         <title>
             <?php echo $_title; ?>
