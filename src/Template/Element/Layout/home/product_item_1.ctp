@@ -22,7 +22,9 @@ if (!empty($discount)) {
     </div>
     <div class="product-flag">
         <ul>
-            <!--<li><span class="sale">new</span></li>-->
+            <?php if (!empty($isHot)): ?>
+            <li><span class="sale">HOT</span></li>
+            <?php endif; ?>
             <?php if (!empty($discount)):?>
             <li><span class="discount-percentage">-<?php echo $discount;?>%</span></li>
             <?php endif; ?>

@@ -111,17 +111,18 @@
             </div>
         </div>
         <div class="tab-active owl-carousel">
-            <?php for ($i = 0; $i < 8; $i++): ?>
-            <div class="tab-total">
-                <?php for ($j = 0; $j < 2; $j++): ?>
-                    <!-- single-product-start -->
-                    <?php echo $this->element('Layout/home/product_item_2', array('i' => $i.$j)); ?>
-                    <!-- single-product-end -->
+            <?php if (!empty($data['new_products'])): ?>
+            <?php
+            $count = count($data['new_products']);
+            $count = floor($count/2);
+            ?>
+                <?php for($i = 0; $i < $count; $i++): ?>
+                <div class="tab-total">
+                    <?php echo $this->element('Layout/home/product_item_2', array('product' => $data['new_products'][$i])); ?>
+                    <?php echo $this->element('Layout/home/product_item_2', array('product' => $data['new_products'][$count + $i])); ?>
+                </div>
                 <?php endfor; ?>
-                
-            </div>
-            <?php endfor; ?>
-
+            <?php endif; ?>
         </div>
     </div>
 </div>
