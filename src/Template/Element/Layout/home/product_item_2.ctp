@@ -43,7 +43,7 @@ $isHot = $product['is_hot'];
                 <li><a href="#"><i class="fa fa-star"></i></a></li>
             </ul>
         </div>
-        <h4><a href="#">Joust Duffle Bag <?php echo $i; ?></a></h4>
+        <h4><a href="<?php echo $url;?>"><?php echo $name;?></a></h4>
         <div class="product-price">
             <ul>
                 <li><?php echo $price; ?>đ</li>
