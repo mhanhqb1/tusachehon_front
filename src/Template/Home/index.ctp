@@ -29,35 +29,35 @@
         <div class="tab-content">
             <div class="tab-pane fade show active" id="newproducts">
                 <div class="tab-active owl-carousel">
-                    <?php for ($i = 0; $i < 8; $i++): ?>
-                        <!-- single-product-start -->
-                        <div class="product-wrapper">
-                            <?php echo $this->element('Layout/home/product_item_1', array('i'=> $i)); ?>
-                        </div>
-                        <!-- single-product-end -->
-                    <?php endfor; ?>
+                    <?php if (!empty($data['new_products'])): ?>
+                    <?php foreach ($data['new_products'] as $v): ?>
+                    <div class="product-wrapper">
+                        <?php echo $this->element('Layout/home/product_item_1', array('product'=> $v)); ?>
+                    </div>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="tab-pane fade" id="onsale">
                 <div class="tab-active owl-carousel">
-                    <?php for ($i = 0; $i < 8; $i++): ?>
-                        <!-- single-product-start -->
-                        <div class="product-wrapper">
-                            <?php echo $this->element('Layout/home/product_item_1', array('i'=> $i)); ?>
-                        </div>
-                        <!-- single-product-end -->
-                    <?php endfor; ?>
+                    <?php if (!empty($data['discount_products'])): ?>
+                    <?php foreach ($data['discount_products'] as $v): ?>
+                    <div class="product-wrapper">
+                        <?php echo $this->element('Layout/home/product_item_1', array('product'=> $v)); ?>
+                    </div>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>    
             </div>
             <div class="tab-pane fade" id="featured">
                 <div class="tab-active owl-carousel">
-                    <?php for ($i = 0; $i < 8; $i++): ?>
-                        <!-- single-product-start -->
-                        <div class="product-wrapper">
-                            <?php echo $this->element('Layout/home/product_item_1', array('i'=> $i)); ?>
-                        </div>
-                        <!-- single-product-end -->
-                    <?php endfor; ?>
+                    <?php if (!empty($data['hot_products'])): ?>
+                    <?php foreach ($data['hot_products'] as $v): ?>
+                    <div class="product-wrapper">
+                        <?php echo $this->element('Layout/home/product_item_1', array('product'=> $v)); ?>
+                    </div>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
