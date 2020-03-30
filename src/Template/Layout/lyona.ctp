@@ -1,5 +1,5 @@
 <?php
-$webTitle = 'LyonaBeauty.Com';
+$webTitle = 'TuSachEhon.Com';
 $_description = !empty($pageDescription) ? $pageDescription : $_settings['company']['seo_description'];
 $_keyword = !empty($pageKeyword) ? $pageKeyword : $_settings['company']['seo_keyword'];
 $_title = !empty($pageTitle) ? $pageTitle : $_settings['company']['name'];
