@@ -23,7 +23,7 @@
             </div>
             <div class="col-lg-4 col-md-4 col-12">
                 <div class="section-title-3">
-                    <h3>Stay Connected</h3>
+                    <h3>Kết nối với chúng tôi</h3>
                 </div>
                 <div class="link-follow">
                     <ul>

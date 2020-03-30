@@ -71,7 +71,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="banner-img-2">
-                    <a href="#"><img src="<?php echo $BASE_URL; ?>/images/banner/5.jpg" alt="banner" /></a>
+                    <a href="<?php echo $BASE_URL;?>/khuyen-mai-hot"><img src="<?php echo $BASE_URL; ?>/images/banner/5.jpg" alt="banner" /></a>
                     <div class="banner-text">
                         <h3>Khuyến mãi HOT</h3>
                         <h2>Giảm giá lên tới 30% trên tổng hóa đơn</h2>
@@ -163,74 +163,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title text-center mb-30 section-title-res">
-                    <h2>Latest from our blog</h2>
+                    <h2>Bài viết mới nhất</h2>
                 </div>
             </div>
             <div class="post-active owl-carousel text-center">
-                <div class="col-lg-12">
-                    <div class="single-post">
-                        <div class="post-img">
-                            <a href="#"><img src="<?php echo $BASE_URL; ?>/images/post/1.jpg" alt="post" /></a>
-                            <div class="blog-date-time">
-                                <span class="day-time">06</span>
-                                <span class="moth-time">Dec</span>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3><a href="#">Nam tincidunt vulputate felis</a></h3>
-                            <span class="meta-author"> Demo koparion </span>
-                            <p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-post">
-                        <div class="post-img">
-                            <a href="blog-details.html"><img src="<?php echo $BASE_URL; ?>/images/post/2.jpg" alt="post" /></a>
-                            <div class="blog-date-time">
-                                <span class="day-time">06</span>
-                                <span class="moth-time">Dec</span>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3><a href="blog-details.html">Interdum et malesuada</a></h3>
-                            <span class="meta-author"> Demo koparion </span>
-                            <p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-post">
-                        <div class="post-img">
-                            <a href="blog-details.html"><img src="<?php echo $BASE_URL; ?>/images/post/3.jpg" alt="post" /></a>
-                            <div class="blog-date-time">
-                                <span class="day-time">07</span>
-                                <span class="moth-time">Dec</span>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3><a href="blog-details.html">What is Bootstrap?</a></h3>
-                            <span class="meta-author"> Demo koparion </span>
-                            <p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single-post">
-                        <div class="post-img">
-                            <a href="blog-details.html"><img src="<?php echo $BASE_URL; ?>/images/post/4.jpg" alt="post" /></a>
-                            <div class="blog-date-time">
-                                <span class="day-time">08</span>
-                                <span class="moth-time">Dec</span>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3><a href="blog-details.html">Etiam eros massa</a></h3>
-                            <span class="meta-author"> Demo koparion </span>
-                            <p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
-                        </div>
-                    </div>
-                </div>
+                <?php if (!empty($data['posts'])): ?>
+                <?php foreach ($data['posts'] as $v): ?>
+                <?php echo $this->element('Layout/home/post_item', array('post' => $v));?>
+                <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
