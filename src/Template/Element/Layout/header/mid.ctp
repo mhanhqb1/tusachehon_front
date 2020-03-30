@@ -3,21 +3,23 @@
         <div class="row">
             <div class="col-lg-3 col-md-5 col-12">
                 <div class="header-search">
-                    <form action="#">
-                        <input type="text" placeholder="Search entire store here..." />
+                    <form action="<?php echo $BASE_URL;?>/tim-kiem" method="GET">
+                        <input type="text" placeholder="Nhập tên sách cần tìm..." />
                         <a href="#"><i class="fa fa-search"></i></a>
                     </form>
                 </div>
             </div>
             <div class="col-lg-6 col-md-4 col-12">
                 <div class="logo-area text-center logo-xs-mrg">
-                    <a href="index.html"><img src="<?php echo $BASE_URL; ?>/images/logo/logo.png" alt="logo" /></a>
+                    <a href="<?php echo $BASE_URL;?>">
+                        <img src="<?php echo $BASE_URL; ?>/images/logo/logo.png" alt="logo" />
+                    </a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-12">
                 <div class="my-cart">
                     <ul>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
                             <span>2</span>
                             <div class="mini-cart-sub">
                                 <div class="cart-product">
