@@ -66,11 +66,11 @@ class PaginateHelper extends AppHelper {
             $start = 1;
             $end = $totalPage;
         }
-        $html = '<div class="pagination-area mt-50">';
-        $html .= '<div class="list-page-2"><p>Có '.$total.' sản phẩm</p></div>';
-        $html .= '<div class="page-number">';
-        $html .= '<ul class="pagination paging">';
         if ($end > 1) {
+            $html = '<div class="pagination-area mt-50">';
+            $html .= '<div class="list-page-2"><p>Có '.$total.' sản phẩm</p></div>';
+            $html .= '<div class="page-number">';
+            $html .= '<ul class="pagination paging">';
             for ($i = $start; $i <= $end; $i++) {
                 if ($i == $page) {
                     $nav .= "<li><a class=\"active\" href=\"#\">{$i}<span class='sr-only'>(current)</span></a></li>";
@@ -104,12 +104,13 @@ class PaginateHelper extends AppHelper {
             $html .= "{$prev}";
             $html .= "{$nav}";
             $html .= "{$next}";
+            
+            $html .= '</ul>';
+            $html .= '</div>';
+            $html .= '</div>';
         }
 
-        $html .= '</ul>';
         
-        $html .= '</div>';
-        $html .= '</div>';
         return $html;
     }
 
