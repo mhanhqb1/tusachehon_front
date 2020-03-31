@@ -61,7 +61,8 @@ class ProductsController extends AppController {
         if (!empty($url)) {
             $data = Api::call(Configure::read('API.url_products_detail'), array(
                 'url' => $url,
-                'get_new_products' => 1
+                'get_discount_products' => 1,
+                'get_related_products' => 1
             ));
             $pageImage = !empty($data['image']) ? $data['image'] : '';
             $pageTitle = !empty($data['name']) ? $data['name'] : '';

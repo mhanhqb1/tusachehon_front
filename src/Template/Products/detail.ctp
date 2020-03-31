@@ -1,155 +1,188 @@
-<?php if (!empty($data)): ?>
-<div class="columns-container">
-    <div class="container" id="columns">
-        <!-- breadcrumb -->
-        <div class="tfsBreadcrumb ">
-            <ol class="breadcrumb breadcrumb-arrow hidden-sm hidden-xs">
-                <li><a href="<?php echo $BASE_URL; ?>" target="_self">Trang chủ</a></li>
-                <li><a href="#">Sản phẩm</a></li>
-                <li class="active"><span> <?php echo $data['name']; ?></span></li>
-            </ol>
-        </div>
-        <!-- /breadcrumb -->
-        <!-- product -->
-        <div id="product">
-            <div class="primary-box row">
-                <!-- image left -->
-                <div class="pb-left-column col-xs-12 col-md-6">
-                    <div id="product-img" class="clearfix">
-                        <img src="<?php echo $data['image']; ?>" class="img-responsive"/>
-                    </div>
-                </div>
-                <!-- /image left -->
-                <!--info right-->
-                <div class="pb-right-column col-xs-12 col-md-6">
-                    <h1 class="product-name"><?php echo $data['name']; ?></h1>
-                    <div class="product-price-group">
-                        <?php if (!empty($data['discount_price'])): ?>
-                            <span class="price" data-price="<?php echo $data['price'] - $data['discount_price']; ?>"><?php echo number_format($data['price'] - $data['discount_price']); ?>₫</span>
-                            <span class="old-price"><?php echo number_format($data['price']); ?>₫</span>
-                        <?php else: ?>
-                            <span class="price" data-price="<?php echo $data['price']; ?>₫"><?php echo number_format($data['price']); ?>₫</span>
-                        <?php endif; ?>
-                    </div>
-                    <!--product infos-->
-                    <div class="product-info clearfix">
-                        <p class="info-item col-xs-12 col-sm-6">
-                            <label>Dòng sản phẩm</label>
-                            <span>
-                                <a href="<?php echo $BASE_URL . '/danh-muc/' . $data['cate_url']; ?>"><?php echo $data['cate_name']; ?></a>
-                            </span>
-                        </p>
-                    </div>
-                    <!--/product infos-->
-                    <!--actions-->
-                    <div class="action product-desc">
-                        <div class="select-wrapper clearfix">
-                            <label>Số lượng</label>
-                            <select id="quantity" name="quantity">
-                                <?php for ($i = 1; $i < 100; $i++): ?>
-                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                <?php endfor; ?>
-                            </select>
-                            <?php if (!empty($_settings['company']['tel'])): ?>
-                                <div class="info-buynow pull-right">
-                                    <p class="text-center" data-gtm-vis-has-fired-2408055_54="1">
-                                        <strong>Tư vấn bán hàng</strong>
-                                    </p>
-                                    <div class="hotline clearfix">
-                                        <div class="hotline-icon">
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="hotline-text text-center" data-gtm-vis-has-fired-2408055_54="1">
-                                            <span class="hotline-color"><?php echo $_settings['company']['tel']; ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="clearfix">
-                            <div class="action-cart pull-left">
-                                <a href="javascript:;" class="btn-cart add-cart " onclick="return addToCart(<?php echo $data['id'];?>)">Thêm vào giỏ<span>(Mua nhiều, lợi nhiều)</span></a>
-                            </div>
-                            <div class="action-cart pull-right" style="margin-right: 0">
-                                <a href="javascript:;" class="buy-now available " onclick="return addToCart2(<?php echo $data['id'];?>)">Mua nhanh<span>(Đặt ngay, gần hết hàng)</span></a>
-                            </div>
-                        </div>
-                        <div class="privacy-bg">
-                            <div class="clearfix">
-                                <div class="privacy-left pull-left">
-                                    <p>Thanh toán khi nhận hàng trên toàn quốc</p>
-                                    <span></span>
-                                </div>
-                                <div class="privacy-right pull-left">
-                                    <p class="doitra">Giao hàng toàn quốc</p>
-                                    <p class="vanchuyen">Giao hàng đảm bảo</p>
-                                    <p class="thanhtoan">Nhiều cách thanh toán</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end actions-->
-                </div>
-                <!--/info right-->
-            </div>
-        </div>
-        <!-- /product -->
-        <!--Product detail bottom row-->
+<?php
+$id = $data['id'];
+$url = $data['url'];
+$image = $data['image'];
+$image2 = !empty($data['image2']) ? $data['image2'] : '';
+$image3 = !empty($data['image3']) ? $data['image3'] : '';
+$image4 = !empty($data['image4']) ? $data['image4'] : '';
+$name = $data['name'];
+$description = $data['description'];
+$detail = $data['detail'];
+$discount = $data['discount_price'];
+$price = number_format($data['price'], 0);
+$oldPrice = 0;
+if (!empty($discount)) {
+    $oldPrice = $price;
+    $price = number_format($data['price'] * (100 - $discount) / 100, 0);
+}
+?>
+<div class="breadcrumbs-area mb-70">
+    <div class="container">
         <div class="row">
-            <?php if (!empty($data['new_products'])): ?>
-            <div class="column col-xs-12 hidden-xs col-sm-3" id="left_column">
-                <!-- left silide -->
-                <div class="col-left-slide left-module">
-                    <ul class="owl-carousel owl-style2" data-loop="true" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1" data-autoplay="true">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="<?php echo $BASE_URL; ?>">Trang chủ</a></li>
+                        <li><a href="<?php echo $BASE_URL; ?>">Sản phẩm</a></li>
+                        <li><a href="javascript:void(0)" class="active"><?php echo $name; ?></a></li>
                     </ul>
                 </div>
-                <!--./left silde-->
-                <div class="block left-module">
-                    <p class="title_block">Sản phẩm mới</p>
-                    <div class="block_content product-onsale">
-                        <ul class="product-list owl-carousel-3" data-loop="true" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1" data-autoplay="true">
-                            <?php foreach ($data['new_products'] as $np): ?>
-                                <li>
-                                    <div class="product-container">
-                                        <?php echo $this->element('Layout/product_item', array('product' => $np)); ?>
-                                    </div>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                </div>
-                <script>
-                    $(document).ready(function () {
-                        $(".owl-carousel-3").owlCarousel({
-                            dots: true,
-                            nav: false,
-                            items: 1,
-                            margin: 30,
-                            loop: true
-                        });
-                    })
-                </script>
-            </div>
-            <?php endif;?>
-            
-            <div class="center_column col-xs-12 col-sm-9" id="center_column">
-                <!-- tab product -->
-                <div class="product-tab">
-                    <ul class="nav-tab">
-                        <li class="active">
-                            <a aria-expanded="false" data-toggle="tab" href="#product-detail">Thông tin sản phẩm</a>
-                        </li>
-                    </ul>
-                    <div class="tab-container">
-                        <div id="product-detail">
-                            <?php echo $data['detail']; ?>
-                        </div>
-                    </div>
-                </div>
-                <!-- /tab product -->
             </div>
         </div>
-        <!--/Product detail bottom row-->
     </div>
 </div>
-<?php endif; ?>
+
+<div class="product-main-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-12 order-lg-1 order-1">
+                <!-- product-main-area-start -->
+                <div class="product-main-area">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 col-12">
+                            <div class="flexslider">
+                                <ul class="slides">
+                                    <li data-thumb="<?php echo $image; ?>">
+                                        <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" />
+                                    </li>
+                                    <?php if (!empty($image2)): ?>
+                                        <li data-thumb="<?php echo $image2; ?>">
+                                            <img src="<?php echo $image2; ?>" alt="<?php echo $name; ?>" />
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if (!empty($image3)): ?>
+                                        <li data-thumb="<?php echo $image3; ?>">
+                                            <img src="<?php echo $image3; ?>" alt="<?php echo $name; ?>" />
+                                        </li>
+                                    <?php endif; ?>
+                                    <?php if (!empty($image4)): ?>
+                                        <li data-thumb="<?php echo $image4; ?>">
+                                            <img src="<?php echo $image4; ?>" alt="<?php echo $name; ?>" />
+                                        </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-12">
+                            <div class="product-info-main">
+                                <div class="page-title">
+                                    <h1><?php echo $name; ?></h1>
+                                </div>
+                                <div class="product-info-stock-sku">
+                                    <span>In stock</span>
+                                    <div class="product-attribute">
+                                        <span>SKU</span>
+                                        <span class="value">SACH-<?php echo $id; ?></span>
+                                    </div>
+                                </div>
+                                <div class="product-reviews-summary">
+                                    <div class="rating-summary">
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a href="#"><i class="fa fa-star"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-info-price">
+                                    <div class="price-final">
+                                        <span><?php echo $price; ?>đ</span>
+                                        <?php if (!empty($oldPrice)): ?>
+                                            <span class="old-price"><?php echo $oldPrice; ?>đ</span>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                                <div class="product-add-form">
+                                    <form action="#">
+                                        <div class="quality-button">
+                                            <input class="qty" type="number" value="1">
+                                        </div>
+                                        <a href="#">Thêm vào giỏ hàng</a>
+                                    </form>
+                                </div>
+                                <div class="product-social-links">
+                                    <div class="product-addto-links">
+                                        <a href="javascript:void(0)"><i class="fa fa-heart"></i></a>
+                                        <a href="javascript:void(0)"><i class="fa fa-pie-chart"></i></a>
+                                        <a href="javascript:void(0)"><i class="fa fa-envelope-o"></i></a>
+                                    </div>
+                                    <div class="product-addto-links-text">
+                                        <p><?php echo $description; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>	
+                </div>
+                <!-- product-main-area-end -->
+                <!-- product-info-area-start -->
+                <div class="product-info-area mt-80">
+                    <!-- Nav tabs -->
+                    <ul class="nav">
+                        <li><a class="active" href="#Details" data-toggle="tab">Thông tin chi tiết</a></li>
+                        <li><a href="#Reviews" data-toggle="tab">Bình luận</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="Details">
+                            <div class="valu">
+                                <?php echo $detail; ?>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="Reviews">
+                            <div class="valu valu-2">
+                                <div id="fb-root"></div>
+                                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v5.0&appId=245530479242476&autoLogAppEvents=1"></script>
+                                <div class="fb-comments" data-href="<?php echo $BASE_URL; ?>/san-pham/<?php echo $url; ?>" data-width="100%" data-numposts="10"></div>
+                            </div>
+                        </div>
+                    </div>	
+                </div>
+                <!-- product-info-area-end -->
+                <!-- new-book-area-start -->
+                <?php if (!empty($data['discount_products'])): ?>
+                    <div class="new-book-area mt-60">
+                        <div class="section-title text-center mb-30">
+                            <h3>Sản phẩm giảm giá</h3>
+                        </div>
+                        <div class="tab-active-2 owl-carousel">
+                            <?php foreach ($data['discount_products'] as $v): ?>
+                                <?php echo $this->element('Layout/home/product_item_2', array('product' => $v)); ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="col-lg-3 col-md-12 col-12 order-lg-2 order-2">
+                <div class="shop-left">
+                    <?php if (!empty($data['related_products'])): ?>
+                        <div class="left-title mb-20">
+                            <h4>Sản phẩm liên quan</h4>
+                        </div>
+                        <div class="random-area mb-30">
+                            <div class="product-active-2 owl-carousel">
+                                <?php
+                                $count = count($data['related_products']);
+                                $count = floor($count/2);
+                                ?>
+                                <?php for($i = 0; $i < $count; $i++): ?>
+                                <div class="product-total-2">
+                                    <?php echo $this->element('Layout/home/product_item_3', array('product' => $data['related_products'][$i])); ?>
+                                    <?php echo $this->element('Layout/home/product_item_3', array('product' => $data['related_products'][$count + $i])); ?>
+                                </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+
+                    <div class="banner-area mb-30">
+                        <div class="banner-img-2">
+                            <a href="<?php echo $BASE_URL;?>/khuyen-mai-hot"><img src="<?php echo $BASE_URL;?>/images/banner/33.jpg" alt="banner" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- product-main-area-end -->
