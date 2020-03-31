@@ -1,75 +1,70 @@
-<div id="collection">
-    <div class="columns-container">
-        <div class="container" id="columns">
-            <!--breadcrumb-->
-            <div class="breadcrumb clearfix">
-                <div class="tfsBreadcrumb ">
-                    <ol class="breadcrumb breadcrumb-arrow hidden-sm hidden-xs">
-                        <li><a href="<?php echo $BASE_URL;?>" target="_self">Trang chủ</a></li>
-                        <li class="active"><span><?php echo $cateName; ?></span></li>
-                    </ol>
-                </div>
-            </div>
-            <!--/breadcrumb-->
-            <div class="row">
-                <!-- Left colunm -->
-                <?php 
-                echo $this->element('Layout/cate_left', array(
-                    'newPosts' => $newPosts,
-                    'cateName' => $cateName
-                ));
-                ?>
-                <!--/left_column-->
-                <!--right_column-->
-                <div class="center_column col-xs-12 col-sm-9 product-col" id="center_column">
-                    <h2 class="page-heading">
-                        <span class="page-heading-title2"><?php echo $cateName;?></span>
-                    </h2>
-                    <!--blog-posts-->
-                    <ul class="blog-posts">
-                        <?php if (!empty($data)): ?>
-                        <?php foreach ($data as $v): ?>
-                        <li class="post-item">
-                            <article class="entry">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="entry-thumb image-hover2 text-center" data-gtm-vis-has-fired-2408055_54="1">
-                                            <a href="<?php echo $BASE_URL.'/bai-viet/'.$v['url'];?>">
-                                                <img src="<?php echo $v['image'];?>" alt="<?php echo $v['name'];?>">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <div class="entry-ci">
-                                            <h3 class="entry-title"><a href="#"><?php echo $v['name'];?></a></h3>
-                                            <div class="entry-meta-data">
-                                                <span class="cat">
-                                                    <i class="fa fa-folder-o"></i>
-                                                    <a href="<?php echo $BASE_URL.'/tin-tuc'.$v['cate_url'];?>"><?php echo $v['cate_name'];?></a>
-                                                </span>
-                                                <span class="date"><i class="fa fa-calendar"></i> <?php echo date('d-m-Y', $v['created']);?></span>
-                                            </div>
-                                            <div class="entry-excerpt">
-                                                <?php echo $v['description'];?>
-                                            </div>
-                                            <div class="entry-more">
-                                                <a href="<?php echo $BASE_URL.'/bai-viet/'.$v['url'];?>">Xem thêm</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </article>
-                        </li>
-                        <?php endforeach; ?>
-                        <?php endif; ?>
+<div class="breadcrumbs-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="<?php echo $BASE_URL; ?>">Trang chủ</a></li>
+                        <li><a href="javascript:void(0)" class="active"><?php echo $cateName; ?></a></li>
                     </ul>
-                    <!--/blog-posts-->
-                    <div class="sortPagiBar clearfix">
-                        <?php echo $this->Paginate->render($total, $limit); ?>
-                    </div>
                 </div>
-                <!--/right_column-->
             </div>
         </div>
     </div>
 </div>
+
+<!-- blog-main-area-start -->
+<div class="blog-main-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-12 order-lg-1 order-2 mt-sm-50">
+                <div class="single-blog mb-50">
+                    <div class="blog-left-title">
+                        <h3>Danh mục sản phẩm</h3>
+                    </div>
+                    <div class="blog-side-menu">
+                        <ul>
+                            <?php if (!empty($_settings['product_cates'])): ?>
+                                <?php foreach ($_settings['product_cates'] as $v): ?>
+                                    <li><a href="<?php echo $BASE_URL; ?>/danh-muc/<?php echo $v['url']; ?>"><?php echo $v['name']; ?></a></li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
+                </div>
+                <?php if (!empty($discountProducts)): ?>
+                <div class="single-blog mb-50">
+                    <div class="blog-left-title">
+                        <h4>Sản phẩm giảm giá</h4>
+                    </div>
+                    <div class="random-area mb-30">
+                        <div class="product-active-2 owl-carousel">
+                            <?php
+                            $count = count($discountProducts);
+                            $count = floor($count / 2);
+                            ?>
+                            <?php for ($i = 0; $i < $count; $i++): ?>
+                                <div class="product-total-2">
+                                    <?php echo $this->element('Layout/home/product_item_3', array('product' => $discountProducts[$i])); ?>
+                                    <?php echo $this->element('Layout/home/product_item_3', array('product' => $discountProducts[$count + $i])); ?>
+                                </div>
+                            <?php endfor; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endif; ?>
+            </div>
+            <div class="col-lg-9 col-md-12 col-12 order-lg-2 order-1">
+                <div class="blog-main-wrapper">
+                    <?php if (!empty($data)): ?>
+                    <?php foreach ($data as $v): ?>
+                    <?php echo $this->element('Layout/home/post_item_1', array('post' => $v));?>
+                    <?php endforeach;?>
+                    <?php endif; ?>
+                </div>
+                <?php echo $this->Paginate->render($total, $limit); ?>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- blog-main-area-end -->

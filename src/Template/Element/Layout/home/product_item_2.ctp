@@ -12,7 +12,7 @@ if (!empty($discount)) {
 }
 $isHot = $product['is_hot'];
 ?>
-<div class="product-wrapper">
+<div class="product-wrapper mb-40">
     <div class="product-img">
         <a href="<?php echo $url; ?>">
             <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" class="primary" />

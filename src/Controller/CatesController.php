@@ -18,7 +18,7 @@ class CatesController extends AppController {
         $ids = array();
         $rootId = '';
         $cateName = '';
-        $limit = 18;
+        $limit = 16;
         $cates = !empty($this->_settings['blog_cates']) ? $this->_settings['blog_cates'] : array();
         
         // Get cate id
@@ -32,12 +32,14 @@ class CatesController extends AppController {
                 $ids[] = $c['id'];
             }
         }
-        $param = array(
+        $param = $this->getParams(array(
             'cate_id' => implode(',', $ids),
             'limit' => $limit,
             'get_new_posts' => 1,
-            'disable' => 0
-        );
+            'disable' => 0,
+            'get_discount_products' => 1,
+            'page' => 1
+        ));
         $pageTitle = $cateName;
         
         // Call API
@@ -45,6 +47,7 @@ class CatesController extends AppController {
         $data = !empty($result['data']) ? $result['data'] : array();
         $total = !empty($result['total']) ? $result['total'] : 0;
         $newPosts = !empty($result['new_posts']) ? $result['new_posts'] : array();
+        $discountProducts = !empty($result['discount_products']) ? $result['discount_products'] : array();
         
         // Set data
         $this->set(compact(
@@ -54,7 +57,8 @@ class CatesController extends AppController {
             'param',
             'cateName',
             'pageTitle',
-            'newPosts'
+            'newPosts',
+            'discountProducts'
         ));
     }
     
