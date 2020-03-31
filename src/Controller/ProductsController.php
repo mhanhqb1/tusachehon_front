@@ -17,7 +17,7 @@ class ProductsController extends AppController {
         $ids = array();
         $rootId = '';
         $cateName = '';
-        $limit = 18;
+        $limit = 16;
         $cates = !empty($this->_settings['product_cates']) ? $this->_settings['product_cates'] : array();
         foreach ($cates as $c) {
             if ($c['url'] == $url) {
@@ -32,19 +32,22 @@ class ProductsController extends AppController {
         $param = $this->getParams(array(
             'cate_id' => implode(',', $ids),
             'limit' => $limit,
-            'disable' => 0
+            'disable' => 0,
+            'get_discount_products' => 1
         ));
         $pageTitle = $cateName;
         $result = Api::call(Configure::read('API.url_products_list'), $param);
         $total = !empty($result['total']) ? $result['total'] : 0;
         $data = !empty($result['data']) ? $result['data'] : array();
+        $discountProducts = !empty($result['discount_product']) ? $result['discount_products'] : array();
         $this->set(compact(
             'data',
             'limit',
             'total',
             'param',
             'cateName',
-            'pageTitle'
+            'pageTitle',
+            'discountProducts'
         ));
     }
     

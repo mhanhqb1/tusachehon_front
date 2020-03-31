@@ -66,13 +66,14 @@ class PaginateHelper extends AppHelper {
             $start = 1;
             $end = $totalPage;
         }
-        $html = '<div class="col-md-12 content_sortPagiBar pagi">';
-        $html .= '<div id="pagination" class="clearfix">';
+        $html = '<div class="pagination-area mt-50">';
+        $html .= '<div class="list-page-2"><p>Có '.$total.' sản phẩm</p></div>';
+        $html .= '<div class="page-number">';
         $html .= '<ul class="pagination paging">';
         if ($end > 1) {
             for ($i = $start; $i <= $end; $i++) {
                 if ($i == $page) {
-                    $nav .= "<li class=\"active\"><a href=\"#\">{$i}<span class='sr-only'>(current)</span></a></li>";
+                    $nav .= "<li><a class=\"active\" href=\"#\">{$i}<span class='sr-only'>(current)</span></a></li>";
                 } else {
                     if (!empty($function)) {
                         $nav .= "<li><a onclick='".$function."({$i})'>{$i}</a></li>";
