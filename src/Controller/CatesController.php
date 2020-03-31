@@ -72,17 +72,20 @@ class CatesController extends AppController {
         $pageDescription = '';
         $pageKeyword = '';
         $newPosts = array();
+        $discountProducts = array();
 
         if (!empty($url)) {
             $data = Api::call(Configure::read('API.url_posts_detail'), array(
                 'url' => $url,
-                'get_new_posts' => 1
+                'get_new_posts' => 1,
+                'get_discount_products' => 1
             ));
             $newPosts = !empty($data['new_posts']) ? $data['new_posts'] : array();
             $pageImage = !empty($data['image']) ? $data['image'] : '';
             $pageTitle = !empty($data['name']) ? $data['name'] : '';
             $pageDescription = !empty($data['seo_description']) ? $data['seo_description'] : '';
             $pageKeyword = !empty($data['seo_keyword']) ? $data['seo_keyword'] : '';
+            $discountProducts = !empty($data['discount_products']) ? $data['discount_products'] : array();
         }
         $this->set(compact(
             'data',
@@ -90,7 +93,8 @@ class CatesController extends AppController {
             'pageTitle',
             'pageDescription',
             'pageKeyword',
-            'newPosts'
+            'newPosts',
+            'discountProducts'
         ));
     }
 }
