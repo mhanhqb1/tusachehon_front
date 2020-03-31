@@ -16,7 +16,7 @@ if (!empty($discount)) {
         <img src="<?php echo $image;?>" alt="<?php echo $name;?>" class="primary" />
     </a>
     <div class="quick-view">
-        <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
+        <a class="action-view" href="javascript:void(0)" onclick="return productModal(<?php echo $id;?>);" title="Quick View">
             <i class="fa fa-search-plus"></i>
         </a>
     </div>

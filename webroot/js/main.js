@@ -196,34 +196,6 @@
     })
     
     /*----------------------------
-     Bestseller active
-    ------------------------------ */
-    $('.bestseller-active').owlCarousel({
-        smartSpeed: 1000,
-        margin: 0,
-        nav: true,
-        autoplay: false,
-        dots: false,
-        margin: 20,
-        loop: true,
-        navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 2
-            },
-            768: {
-                items: 2
-            },
-            1000: {
-                items: 2
-            }
-        }
-    })
-    
-    /*----------------------------
      Product active 2
     ------------------------------ */
     $('.product-active-2').owlCarousel({
@@ -503,23 +475,65 @@
     
     /* Category Dropdown Menu  */
     if ($(window).width() < 768) {
-        function sidemenuDropdown() {
-            var $this = $('.category-menu');
-            $this.find('nav.menu .cr-dropdown').find('.left-menu').css('display', 'none');
-            $this.find('nav.menu .cr-dropdown ul').slideUp();
-            $this.find('nav.menu .cr-dropdown a').on('click', function(e) {
-                e.preventDefault();
-                $(this).parent('.cr-dropdown').children('ul').slideToggle();
-            });
-            $this.find('nav.menu .cr-dropdown ul .cr-sub-dropdown ul').css('display', 'none');
-            $this.find('nav.menu .cr-dropdown ul .cr-sub-dropdown a').on('click', function(e) {
-                e.preventDefault();
-                $(this).parent('.cr-sub-dropdown').children('ul').slideToggle();
-            });
-        }
         sidemenuDropdown();
     }
-
-
+    
+    function sidemenuDropdown() {
+        var $this = $('.category-menu');
+        $this.find('nav.menu .cr-dropdown').find('.left-menu').css('display', 'none');
+        $this.find('nav.menu .cr-dropdown ul').slideUp();
+        $this.find('nav.menu .cr-dropdown a').on('click', function(e) {
+            e.preventDefault();
+            $(this).parent('.cr-dropdown').children('ul').slideToggle();
+        });
+        $this.find('nav.menu .cr-dropdown ul .cr-sub-dropdown ul').css('display', 'none');
+        $this.find('nav.menu .cr-dropdown ul .cr-sub-dropdown a').on('click', function(e) {
+            e.preventDefault();
+            $(this).parent('.cr-sub-dropdown').children('ul').slideToggle();
+        });
+    }
 
 })(jQuery);
+
+function productModal(productId) {
+    var $param = {
+        'type': 'POST',
+        'url': BASE_URL + '/ajax/productdetail',
+        'data': {
+            'id': productId
+        },
+        'callback': function (data) {
+            $('#productModal .modal-body').html(data);
+            $('#productModal').modal();
+        }
+    };
+    cms_adapter_ajax($param);
+}
+
+/*
+ * Process ajax request
+ *
+ * $param là một object {'type','url', 'data', 'callback'}
+ *
+ * default type POST
+ /*********************************************************************/
+function cms_adapter_ajax($param) {
+    if (typeof $param.complete == 'undefined') {
+        $param['complete'] = function(){};
+    }
+    if (typeof $param.beforeSend == 'undefined') {
+        $param['beforeSend'] = function(){};
+    }
+    $.ajax({
+        headers: {
+            'X-CSRF-Token': _csrfToken
+        },
+        url: $param.url,
+        type: $param.type,
+        data: $param.data,
+        async: true,
+        beforeSend: $param.beforeSend,
+        success: $param.callback,
+        complete: $param.complete
+    });
+}

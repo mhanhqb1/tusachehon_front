@@ -17,8 +17,7 @@ class AjaxController extends AppController {
      * Product detail
      */
     public function productdetail() {
-        $data = $this->request->data();
-        $this->set('data', $data);
+        include ('Bus/Ajax/productdetail.php');
     }
     
     /**

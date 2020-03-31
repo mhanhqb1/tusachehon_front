@@ -247,4 +247,4 @@ define('DEFAULT_SITE_TITLE', 'Con Là Tất Cả');
 if (!defined('USE_SUB_DIRECTORY')) {
     define('USE_SUB_DIRECTORY', '');
 }
-Configure::write('Config.cartSessionKey', 'LyonaBeauty.Com.CartSessionKey');
+Configure::write('Config.cartSessionKey', 'TuSachEhon.Com.CartSessionKey');

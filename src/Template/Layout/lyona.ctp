@@ -54,6 +54,13 @@ $_time = time();
         <link rel="stylesheet" href="<?php echo $BASE_URL; ?>/css/responsive.css">
         <!-- modernizr css -->
         <script src="<?php echo $BASE_URL; ?>/js/modernizr-2.8.3.min.js"></script>
+        
+        <script type="text/javascript">
+            var BASE_URL = '<?php echo $BASE_URL; ?>';
+            var controller = '<?php echo $controller; ?>';
+            var action = '<?php echo $action; ?>';
+            var _csrfToken = '<?php echo $this->request->getParam('_csrfToken'); ?>';
+        </script>
     </head>
 
     <body class="home option2 insCustomer">
@@ -90,6 +97,6 @@ $_time = time();
         <!-- plugins js -->
         <script src="<?php echo $BASE_URL;?>/js/plugins.js"></script>
         <!-- main js -->
-        <script src="<?php echo $BASE_URL;?>/js/main.js"></script>
+        <script src="<?php echo $BASE_URL;?>/js/main.js?<?php echo $time;?>"></script>
     </body>
 </html>
