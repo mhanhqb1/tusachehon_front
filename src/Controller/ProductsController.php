@@ -39,7 +39,7 @@ class ProductsController extends AppController {
         $result = Api::call(Configure::read('API.url_products_list'), $param);
         $total = !empty($result['total']) ? $result['total'] : 0;
         $data = !empty($result['data']) ? $result['data'] : array();
-        $discountProducts = !empty($result['discount_product']) ? $result['discount_products'] : array();
+        $discountProducts = !empty($result['discount_products']) ? $result['discount_products'] : array();
         $this->set(compact(
             'data',
             'limit',
