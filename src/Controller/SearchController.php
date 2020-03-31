@@ -14,10 +14,11 @@ class SearchController extends AppController {
      * List products
      */
     public function index() {
-        $limit = 18;
+        $limit = 16;
         $param = $this->getParams(array(
             'limit' => $limit,
-            'disable' => 0
+            'disable' => 0,
+            'get_discount_products' => 1
         ));
         $name = !empty($param['name']) ? $param['name'] : '';
         $pageTitle = 'Tìm kiếm';
@@ -25,13 +26,15 @@ class SearchController extends AppController {
         $result = Api::call(Configure::read('API.url_products_list'), $param);
         $total = !empty($result['total']) ? $result['total'] : 0;
         $data = !empty($result['data']) ? $result['data'] : array();
+        $discountProducts = !empty($result['discount_products']) ? $result['discount_products'] : array();
         $this->set(compact(
             'data',
             'limit',
             'total',
             'param',
             'cateName',
-            'pageTitle'
+            'pageTitle',
+            'discountProducts'
         ));
     }
 }

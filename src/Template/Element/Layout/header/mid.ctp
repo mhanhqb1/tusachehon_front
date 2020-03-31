@@ -4,8 +4,8 @@
             <div class="col-lg-3 col-md-5 col-12">
                 <div class="header-search">
                     <form action="<?php echo $BASE_URL;?>/tim-kiem" method="GET">
-                        <input type="text" placeholder="Nhập tên sách cần tìm..." />
-                        <a href="#"><i class="fa fa-search"></i></a>
+                        <input type="text" name="name" placeholder="Nhập tên sách cần tìm..." />
+                        <a href="javascript:void(0)"><i class="fa fa-search"></i></a>
                     </form>
                 </div>
             </div>
