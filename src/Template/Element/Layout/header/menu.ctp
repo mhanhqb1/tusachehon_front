@@ -9,7 +9,7 @@
                                 <a href="<?php echo $BASE_URL; ?>">Trang chủ</a>
                             </li>
                             <li>
-                                <a href="<?php echo $BASE_URL; ?>/gioi-thieu">Giới thiệu</a>
+                                <a href="<?php echo $BASE_URL; ?>">Giới thiệu</a>
                             </li>
                             <li><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                 <div class="sub-menu sub-menu-2">
