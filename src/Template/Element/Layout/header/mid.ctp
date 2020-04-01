@@ -21,7 +21,7 @@
                     <ul>
                         <li>
                             <a href="<?php echo $BASE_URL;?>/gio-hang"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a>
-                            <span class="cart-qty"><?php echo $cart['total'];?></span>
+                            <span class="cart-qty"><?php echo !empty($cart['total']) ? $cart['total'] : 0;?></span>
                             <div class="mini-cart-sub">
                                  <?php if (!empty($cart)): ?>
                                     <?php echo $cart['html']; ?>
