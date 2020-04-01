@@ -53,7 +53,7 @@ if (!empty($discount)) {
 </div>
 <div class="product-link">
     <div class="product-button">
-        <a href="#" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+        <a href="javascript:void(0)" onclick="return addToCart(<?php echo $id;?>, 1);" title="Thêm vào giỏ hàng"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
     </div>
     <div class="add-to-link">
         <ul>

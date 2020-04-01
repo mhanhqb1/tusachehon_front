@@ -1,5 +1,6 @@
 <?php
 $image = $data['image'];
+$id = $data['id'];
 $image2 = !empty($data['image2']) ? $data['image2'] : '';
 $image3 = !empty($data['image3']) ? $data['image3'] : '';
 $image4 = !empty($data['image4']) ? $data['image4'] : '';
@@ -62,8 +63,8 @@ if (!empty($discount)) {
             <p><?php echo $description;?></p>
             <br/>
             <form action="#">
-                <input type="number" value="1" />
-                <button>Thêm vào giỏ hàng</button>
+                <input type="number" id="quantity" value="1" />
+                <button onclick="return addToCart(<?php echo $id;?>);">Thêm vào giỏ hàng</button>
             </form>
             <span><i class="fa fa-check"></i> In stock</span>
         </div>

@@ -22,7 +22,7 @@ if (!empty($cart[$id])) {
         'url' => !empty($product['url']) ? $product['url'] : '',
         'image' => !empty($product['image']) ? $product['image'] : '',
         'name' => !empty($product['name']) ? $product['name'] : '',
-        'price' => !empty($product['discount_price']) ? $product['price'] - $product['discount_price'] : $product['price'],
+        'price' => !empty($product['discount_price']) ? $product['price']*(100 - $product['discount_price'])/100 : $product['price'],
         'qty' => $qty
     );
 }

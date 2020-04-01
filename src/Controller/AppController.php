@@ -203,6 +203,8 @@ class AppController extends Controller {
         $total = 0;
         $totalPrice = 0;
         $productHtml = "";
+        $cartUrl = $this->BASE_URL . '/gio-hang';
+        $checkOutUrl = $this->BASE_URL . '/thanh-toan';
         foreach ($cart as $k => $v) {
             if (in_array($k, array('html', 'total'))) {
                 continue;
@@ -212,36 +214,34 @@ class AppController extends Controller {
                 $totalPrice += $v['price'] * $v['qty'];
                 $_price = number_format($v['price']);
                 $_link = $this->BASE_URL . '/san-pham/' . $v['url'];
-                $productHtml .= "<li class='product-info' data-id='{$v['id']}'>
-                    <div class='p-left'>
-                        <a href='{$_link}'>
-                            <img class='img-responsive' src='{$v['image']}' alt='{$v['name']}'>
-                        </a>
-                    </div>
-                    <div class='p-right'>
-                        <p class='p-name'>{$v['name']}</p>
-                        <p class='p-rice'>{$_price}đ</p>
-                        <p>Số lượng: {$v['qty']}</p>
-                    </div>
-                </li>";
+                $_image = $v['image'];
+                $_name = $v['name'];
+                $_qty = $v['qty'];
+                $productHtml .= '<div class="single-cart">';
+                $productHtml .= '<div class="cart-img">';
+                $productHtml .= '<a href="'.$_link.'"><img src="'.$_image.'" alt="'.$_name.'" /></a>';
+                $productHtml .= '</div>';
+                $productHtml .= '<div class="cart-info">';
+                $productHtml .= '<h5><a href="'.$_link.'">'.$_name.'</a></h5>';
+                $productHtml .= '<p>'.$_qty.' x '.$_price.'đ</p>';
+                $productHtml .= '</div>';
+                $productHtml .= '<div class="cart-icon">';
+                $productHtml .= '<a href="#"><i class="fa fa-remove"></i></a>';
+                $productHtml .= '</div>';
+                $productHtml .= '</div>';
             }
         }
         $cart['total'] = $total;
-        $html = "<div class='cart-block-content'>
-            <h5 class='cart-title'>Bạn hiện có {$total} sản phẩm</h5>
-            <div class='cart-block-list'>
-                <ul>
-                    {$productHtml}
-                </ul>
-            </div>
-            <div class='toal-cart'>
-                <span>Tổng tiền</span>
-                <span class='toal-price pull-right'>" . number_format($totalPrice) . "₫</span>
-            </div>
-            <div class='cart-buttons'>
-                <a href='" . $this->BASE_URL . '/thanh-toan' . "' class='btn-check-out'>Thanh toán</a>
-            </div>
-        </div>";
+        $html = '<div class="cart-product">';
+        $html .= $productHtml;
+        $html .= '</div>';
+        $html .= '<div class="cart-totals">';
+        $html .= '<h5>Tổng tiền <span>'.number_format($totalPrice).'đ</span></h5>';
+        $html .= '</div>';
+        $html .= '<div class="cart-bottom">';
+        $html .= '<a class="view-cart" href="'.$cartUrl.'">Xem giỏ hàng</a>';
+        $html .= '<a href="'.$checkOutUrl.'">Thanh toán</a>';
+        $html .= '</div>';
         $cart['html'] = $html;
         return $cart;
     }

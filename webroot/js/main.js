@@ -510,6 +510,40 @@ function productModal(productId) {
     cms_adapter_ajax($param);
 }
 
+function addToCart($pId, $qty) {
+    if (typeof $pId == 'undefined') {
+        $pId = false;
+    }
+    if (typeof $qty == 'undefined') {
+        var selectQty = $('#quantity').val();
+        if (selectQty) {
+            $qty = selectQty;
+        } else {
+            $qty = 1;
+        }
+    }
+    if ($pId) {
+        var $param = {
+            'type': 'POST',
+            'url': BASE_URL + '/ajax/addtocart',
+            'data': {
+                'product_id': $pId,
+                'qty': $qty
+            },
+            'callback': function (result) {
+                var obj = JSON.parse(result);
+                var _html = obj.html;
+                var _total = obj.total;
+                alert('Bạn đã thêm sản phẩm vào giỏ hàng!');
+                $('.my-cart .mini-cart-sub').html(_html);
+                $('.my-cart .cart-qty').html(_total);
+            }
+        };
+        cms_adapter_ajax($param);
+    }
+    return false;
+}
+
 /*
  * Process ajax request
  *
