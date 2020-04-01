@@ -564,13 +564,14 @@ function updateCart($pId, $qty, $isMenu) {
                 'is_menu': $isMenu
             },
             'callback': function (data) {
-                if ($isMenu != 0) {
-                    var obj = JSON.parse(data);
-                    var _html = obj.html;
-                    var _total = obj.total;
-                    alert('Bạn đã xóa sản phẩm khỏi giỏ hàng!');
-                    $('.my-cart .mini-cart-sub').html(_html);
-                    $('.my-cart .cart-qty').html(_total);
+                var obj = JSON.parse(data);
+                var _html = obj.html;
+                var _total = obj.total;
+                alert('Bạn đã xóa sản phẩm khỏi giỏ hàng!');
+                $('.my-cart .mini-cart-sub').html(_html);
+                $('.my-cart .cart-qty').html(_total);
+                if ($isMenu == 0) {
+                    location.reload();
                 }
             }
         };

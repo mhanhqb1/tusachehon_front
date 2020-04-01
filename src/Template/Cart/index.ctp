@@ -1,120 +1,120 @@
-<style>
-    #cart {padding: 30px 0;}
-    .image img {max-width: 100%;width: 50px;}
-    tr.summary td {width: 23%;}
-    th.image {}
-    span.variant_title {display: block;}
-    div#layout-page table td {
-        /* width: 20%; */
-        padding: 10px;
-        border: 1px solid #ccc;
-        text-align: center;
-        vertical-align: middle;
-    }
-    td.item{text-align:left !important;}
-    td.image {/* width: 140px; */}
-
-    div#layout-page table {width: 100%;}
-
-    div#layout-page table th {
-        padding: 8px 0;
-        background: #F8F8F8;
-        border: 1px solid #CCC;
-        text-align: center;
-        font-weight: bold;
-        color: #333;
-    }
-    textarea#note {border: 1px solid #ccc;vertical-align: top;}
-    label {}
-
-    .checkout-buttons.clearfix label {
-        display: block;
-        font-size: 13px;
-        margin-bottom: 10px;
-    }
-
-    .checkout-buttons.clearfix {margin: 20px 0 5px;}
-    a.continue {
-        margin-top: 20px;
-        display: inline-block;
-        padding: 0 10px;
-        border: 1px solid #666;
-        border-radius: 5px;
-        background: #fff;
-        height: 34px;
-        line-height: 34px;
-    }
-    a.continue i{margin-right:5px;}
-    a.continue:hover{background: #6E9602;color:#fff}
-    .buttons.clearfix button, .buttons.clearfix #update-cart, #check {
-        background: #6E9602;
-        color: #fff;
-        border: none;
-        padding: 10px 23px;
-        margin: 5px 10px 5px 0;
-        cursor:pointer;
-        display: inline-block;
-    }
-    #check{margin-right:0;}
-    div#layout-page h1 {
-        font-size: 15px;
-        margin-bottom: 10px;
-        text-transform: initial;
-        border: 0;
-        color: #333;
-        line-height: initial;
-    }
-    .cart-buttons.inner-right{
-        float: right;
-        margin-top: 20px;
-    }
-    input[type="number"]{text-align:center;}
-    @media screen and (max-width:767px){
-        div#layout-page table td{
-            padding:5px 0;
-        }
-        div#layout-page table td.qty input{
-            width:50px !important;
-        }
-        #cart #checkout, #update-cart, .bottom-cart-right {
-            width: auto;
-        }
-    }
-    .text-right{text-align:right}
-    .price-text {
-        color: red;
-        font-weight: 600;
-    }
-
-    tr .image{width:75px;box-sizing: border-box;position:initial}
-    tr .item{width:400px;box-sizing: border-box;}
-    tr .qty{width:50px;box-sizing: border-box;}
-    .item-quantity {width: 50px;box-sizing: border-box;border: 1px solid #999;height: 24px;}
-    tr .promotion{width:85px;box-sizing: border-box;}
-    tr .remove{width:25px;box-sizing: border-box;}
-</style>
-<div class="styleBreadcrumb">
+<div class="breadcrumbs-area mb-70">
     <div class="container">
-        <div class="tfsBreadcrumb ">
-            <ol class="breadcrumb breadcrumb-arrow hidden-sm hidden-xs">
-                <li><a href="/" target="_self">Trang chủ</a></li>
-                <li class="active">Giỏ hàng</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<!--cart-->
-<div class="container">
-    <div id="cart">
-        <!-- Begin empty cart -->
         <div class="row">
-            <div id="layout-page" class="col-md-12">
-                <?php if (!empty($cart)):?>
-                <?php echo $this->element('Layout/cart');?>
-                <?php endif;?>
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="<?php echo $BASE_URL; ?>">Trang chủ</a></li>
+                        <li><a href="javascript:void(0)" class="active">Giỏ hàng</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <!-- End cart -->
     </div>
 </div>
-<!--/cart-->
+<div class="entry-header-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="entry-header-title">
+                    <h2>Giỏ hàng</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cart-main-area mb-70">
+    <div class="container">
+        <?php
+        $total = 0;
+        ?>
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="<?php echo $BASE_URL; ?>/gio-hang" method="POST" id="cartformpage">
+                    <div class="table-content table-responsive mb-15 border-1">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="product-thumbnail">Hình ảnh</th>
+                                    <th class="product-name">Sản phẩm</th>
+                                    <th class="product-price">Giá</th>
+                                    <th class="product-quantity">Số lượng</th>
+                                    <th class="product-subtotal">Thành tiền</th>
+                                    <th class="product-remove">Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($cart as $k => $v): ?>
+                                    <?php
+                                    if (!is_numeric($k)) {
+                                        continue;
+                                    }
+                                    $subTotal = $v['price'] * $v['qty'];
+                                    $total += $subTotal;
+                                    $subTotal = number_format($subTotal);
+                                    $url = $BASE_URL . '/san-pham' . $v['url'];
+                                    $image = $v['image'];
+                                    $price = number_format($v['price']);
+                                    $name = $v['name'];
+                                    $qty = $v['qty'];
+                                    $id = $v['id'];
+                                    ?>
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="<?php echo $url; ?>">
+                                                <img src="<?php echo $image; ?>" alt="<?php echo $name; ?>" />
+                                            </a>
+                                        </td>
+                                        <td class="product-name"><a href="<?php echo $url; ?>"><?php echo $name; ?></a></td>
+                                        <td class="product-price"><span class="amount"><?php echo $price; ?>đ</span></td>
+                                        <td class="product-quantity"><input type="number" name="updates[<?php echo $k;?>]" min="1" value="<?php echo $qty; ?>"></td>
+                                        <td class="product-subtotal"><?php echo $subTotal; ?>đ</td>
+                                        <td class="product-remove"><a href="javascript:void(0)" onclick="return updateCart(<?php echo $id; ?>, 0);"><i class="fa fa-times"></i></a></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-6 col-12">
+                <div class="buttons-cart mb-30">
+                    <ul>
+                        <li><a href="javascript:void(0)" id="update-cart" onclick="$('#cartformpage').submit();">Cập nhật giỏ hàng</a></li>
+                        <li><a href="<?php echo $BASE_URL; ?>">Tiếp tục mua hàng</a></li>
+                    </ul>
+                </div>
+                <div class="coupon">
+                    <h3>Mã giảm giá</h3>
+                    <p>Nhập mã giảm giá ở đây.</p>
+                    <form>
+                        <input type="text" placeholder="Mã giảm giá">
+                        <a href="#">Áp dụng</a>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="cart_totals">
+                    <h2>Tổng tiền</h2>
+                    <table>
+                        <tbody>
+                            <tr class="order-total">
+                                <th>Total</th>
+                                <td>
+                                    <strong>
+                                        <span class="amount"><?php echo number_format($total); ?>đ</span>
+                                    </strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="wc-proceed-to-checkout" style="clear: both;">
+                        <a href="<?php echo $BASE_URL; ?>/thanh-toan">Thanh toán</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6464,7 +6464,7 @@ nav.menu .cr-dropdown ul {
 
 .cart_totals h2 {
     border-bottom: 2px solid #333;
-    display: inline-block;
+    display: block;
     font-family: "Rufina", serif;
     font-size: 30px;
     font-weight: 400;

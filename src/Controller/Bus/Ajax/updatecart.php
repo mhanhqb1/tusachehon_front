@@ -19,11 +19,9 @@ if (!empty($data['qty'])) {
 }
 $cart = $this->formatCart($cart);
 $session->write($sessionKey, $cart);
-if (!empty($data['is_menu'])) {
-    $result = array(
-        'total' => $cart['total'],
-        'html' => $cart['html']
-    );
-    echo json_encode($result);
-    exit();
-}
+$result = array(
+    'total' => $cart['total'],
+    'html' => $cart['html']
+);
+echo json_encode($result);
+exit();
