@@ -53,23 +53,22 @@
                                 <a href="<?php echo $BASE_URL; ?>">Giới thiệu</a>
                             </li>
                             <li>
-                                <a href="<?php echo $BASE_URL; ?>/san-pham">Sản phẩm</a>
+                                <a href="javascript:void(0)">Sản phẩm</a>
                                 <ul>
-                                    <li><a href="blog.html">Combo sách</a></li>
-                                    <li><a href="blog-details.html">Sách cho bé 0-2 tuổi</a></li>
-                                    <li><a href="blog-details.html">Sách cho bé 2-4 tuổi</a></li>
-                                    <li><a href="blog-details.html">Sách cho bé 4-6 tuổi</a></li>
-                                    <li><a href="blog-details.html">Sách cho bé 6-8 tuổi</a></li>
+                                    <?php if (!empty($_settings['product_cates'])): ?>
+                                    <?php foreach ($_settings['product_cates'] as $v): ?>
+                                    <li><a href="<?php echo $BASE_URL;?>/danh-muc/<?php echo $v['url']; ?>"><?php echo $v['name']; ?></a></li>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </ul>
                             </li>
+                            <?php if (!empty($_settings['blog_cates'])): ?>
+                                <?php foreach ($_settings['blog_cates'] as $v): ?>
+                                    <li><a href="<?php echo $BASE_URL; ?>/tin-tuc/<?php echo $v['url']; ?>"><?php echo $v['name']; ?></a></li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                             <li>
-                                <a href="product-details.html">Tin tức</a>
-                            </li>
-                            <li>
-                                <a href="#">Bí kíp nuôi dạy con</a>
-                            </li>
-                            <li>
-                                <a href="#">Khuyến mãi</a>
+                                <a href="<?php echo $BASE_URL; ?>/khuyen-mai-hot">Khuyến mãi</a>
                             </li>
                         </ul>
                     </nav>

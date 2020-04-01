@@ -217,6 +217,7 @@ class AppController extends Controller {
                 $_image = $v['image'];
                 $_name = $v['name'];
                 $_qty = $v['qty'];
+                $_id = $v['id'];
                 $productHtml .= '<div class="single-cart">';
                 $productHtml .= '<div class="cart-img">';
                 $productHtml .= '<a href="'.$_link.'"><img src="'.$_image.'" alt="'.$_name.'" /></a>';
@@ -226,7 +227,7 @@ class AppController extends Controller {
                 $productHtml .= '<p>'.$_qty.' x '.$_price.'đ</p>';
                 $productHtml .= '</div>';
                 $productHtml .= '<div class="cart-icon">';
-                $productHtml .= '<a href="#"><i class="fa fa-remove"></i></a>';
+                $productHtml .= '<a href="javascript:void(0)" onclick="return updateCart('.$_id.', 0, 1);"><i class="fa fa-remove"></i></a>';
                 $productHtml .= '</div>';
                 $productHtml .= '</div>';
             }
