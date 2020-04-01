@@ -48,9 +48,6 @@ if (!empty($discount)) {
                 <?php if (!empty($image4)): ?>
                 <a href="#image-4"><img src="<?php echo $image4; ?>" alt="<?php echo $name;?>" /></a>
                 <?php endif; ?>
-                
-                <a href="#image-3"><img src="<?php echo $BASE_URL; ?>/images/product/quickview-s3.jpg" alt="" /></a>
-                <a href="#image-4"><img src="<?php echo $BASE_URL; ?>/images/product/quickview-s5.jpg" alt="" /></a>
             </div>
         </div>
     </div>
@@ -63,7 +60,7 @@ if (!empty($discount)) {
             <p><?php echo $description;?></p>
             <br/>
             <form action="#">
-                <input type="number" id="quantity" value="1" />
+                <input type="number" id="quantity" min="1" value="1" />
                 <button onclick="return addToCart(<?php echo $id;?>);">Thêm vào giỏ hàng</button>
             </form>
             <span><i class="fa fa-check"></i> In stock</span>

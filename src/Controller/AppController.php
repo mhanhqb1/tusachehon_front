@@ -144,8 +144,6 @@ class AppController extends Controller {
     public function setLayout() {
         if ($this->controller == 'ajax') {
             $this->viewBuilder()->layout('ajax');
-        } elseif ($this->controller == 'cart' && in_array($this->action, array('checkout', 'complete'))) {
-            $this->viewBuilder()->layout('checkout');
         } else {
             $this->viewBuilder()->layout('lyona');
         }

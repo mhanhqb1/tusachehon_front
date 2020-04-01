@@ -95,7 +95,7 @@ if (!empty($discount)) {
                                 <div class="product-add-form">
                                     <form>
                                         <div class="quality-button">
-                                            <input class="qty" id="quantity" type="number" value="1">
+                                            <input class="qty" id="quantity" min="1" type="number" value="1">
                                         </div>
                                         <a href="javascript:void(0)" onclick="return addToCart(<?php echo $id;?>);">Thêm vào giỏ hàng</a>
                                     </form>

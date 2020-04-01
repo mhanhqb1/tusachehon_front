@@ -1,120 +1,144 @@
-<span class="fbtracker-checkout"></span>
-<a href="<?php echo $BASE_URL; ?>/gio-hang">
-    <h1 style="background-image: url(<?php echo $_settings['company']['logo']; ?>);">
-        <span class="btn-back">Quay về giỏ hàng</span> 
-        LYONABEAUTY
-    </h1>
-</a>
-<div class="container clearfix">
-    <!--Step 1-->
-    <div class="col-4 step1">
-        <h2>Thông tin giao hàng</h2>
-        <div class="form-info">
-            <form accept-charset="UTF-8" action="/dat-hang" class="new_order" id="forminfo" method="post" novalidate="novalidate">
-                <div class="form-group">
+<div class="breadcrumbs-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumbs-menu">
+                    <ul>
+                        <li><a href="<?php echo $BASE_URL; ?>">Trang chủ</a></li>
+                        <li><a href="javascript:void(0)" class="active">Thanh toán</a></li>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <input placeholder="Họ và tên" class="formcontrol required" id="billing_address_full_name" name="name" size="30" type="text">
-                    <p>Họ và tên</p>
-                </div>
-                <div class="form-group">
-                    <input placeholder="Số điện thoại" maxlength="11" id="billing_address_phone" class="formcontrol required" name="phone" size="30" title="Nhập số điện thoại" pattern="^\d{8,11}" type="tel" value="" required="" aria-required="true">
-                    <p>Số điện thoại</p>
-                </div>
-                <div class="form-group">
-                    <input placeholder="Email" id="order_email" name="email" class="formcontrol required" size="30" type="email" value="" required="" aria-required="true">
-                    <p>Email</p>
-                </div>
-                <div class="form-group">
-                    <input placeholder="Địa chỉ" id="billing_address_address1" class="formcontrol required" name="address" size="30" type="text" value="" required="" aria-required="true">
-                    <p>Địa chỉ</p>
-                </div>
-                <div class="form-group">
-                    <textarea id="billing_note" placeholder="Ghi chú đơn hàng" name="note" rows="3" class="formcontrol ordernote"></textarea>
-                    <p>Ghi chú đơn hàng</p>
-                </div>
-                <div class="error summary" style="display: none">
-                    (<span class="color-red ">*</span>)Vui lòng nhập đủ thông tin
-                </div>
-            </form>
-        </div>
-        <div class="listerror">
+            </div>
         </div>
     </div>
-    <!--/Step 1-->
-    <!--Step 2-->
-    <div class="col-4">
-        <!-- Vận chuyển & Thanh Toán -->
-        <div class="ctrl-shipping">
-            <h3 class="h-shipping ">Vận chuyển</h3>
-            <div class="form-group ">
-                <div class="custom-dropdown"><select class="drop_shipping" name="shipping_rate"></select></div>
-            </div>
-        </div>
-        <h3>Thanh toán</h3>
-        <div class="shiping-ajax">
-            <label class="lb-method">
-                <input class="input-method" type="radio" checked="checked" name="gateway" value="90035">
-                <span class="label-radio"> Thanh toán khi giao hàng (COD)</span>
-            </label>
-            <span class="desc" style="display: block;"></span>
-<!--            <label class="lb-method">
-                <input class="input-method" type="radio" name="gateway" value="90036">
-                <span class="label-radio"> Chuyển khoản qua ngân hàng</span>
-            </label>
-            <span class="desc">CHUYỂN KHOẢN VÀO TÀI KHOẢN
-                Ngân hàng: TM CP Ngoại Thương Việt Nam (Vietcombank)
-                Chi nhánh: TP HCM
-                Số tài khoản: 007.100.1058263 (TK VND)
-                Tên tài khoản: CT TNHH HOA SEN VIET
-                NỘI DUNG CHUYỂN KHOẢN: Họ và Tên + Mã đơn hàng
-            </span>-->
-            <span class="desc"></span>
-        </div>
-        <div class="show__info">
-            <h2>Thông tin mua hàng của bạn</h2>
-            <ul><li id="fullname">Họ và Tên: <span></span></li>
-                <li id="phone_number">Số điện thoại: <span></span></li>
-                <li id="email_address">Email: <span></span></li>
-                <li id="address_number">Địa chỉ: <span></span></li>
-            </ul>
-        </div>
-    </div>
-    <!--/Step 2-->
-    <!--Step 3-->
-    <div class="col-4">
-        <div class="box-cart">
-            <h2>Đơn hàng</h2>
-            (<span><?php echo $cart['total'];?></span> sản phẩm)
-            <div class="cart-items">
-                <?php $totalPrice = 0; ?>
-                <?php foreach ($cart as $k => $v):?>
-                <?php
-                if (in_array($k, array('total', 'html'))) {
-                    continue;
-                }
-                $subPrice = $v['price'] * $v['qty'];
-                $totalPrice += $subPrice;
-                ?>
-                <div class="list_item cart-item">
-                    <span><?php echo $v['qty'];?> x</span>
-                    <span><?php echo $v['name'];?></span>
-                    <span class="price"><?php echo number_format($subPrice);?>₫</span>
-                </div>
-                <?php endforeach;?>
-                
-            </div>
-            <div class="total-price">
-                Tạm tính   <label> <?php echo number_format($totalPrice);?>₫</label>
-            </div>
-            <div class="shiping-price">
-                Phí vận chuyển   <label>0</label>
-            </div>
-            <div class="total-checkout">
-                Tổng cộng <span> <?php echo number_format($totalPrice);?>₫</span>
-            </div>
-        </div>
-        <button type="submit" class="btn-checkout">Đặt hàng</button>
-    </div>
-    <!--/Step 3-->
 </div>
+<!-- checkout-area-start -->
+<div class="checkout-area mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="<?php echo $BASE_URL;?>/thanh-toan" method="POST">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="checkbox-form">						
+                                <h3>Thông tin khách hàng</h3>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-12">
+                                        <div class="checkout-form-list">
+                                            <label>Họ và tên <span class="required">*</span></label>										
+                                            <input type="text" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-12">
+                                        <div class="checkout-form-list">
+                                            <label>Địa chỉ <span class="required">*</span></label>
+                                            <input type="text" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="checkout-form-list">
+                                            <label>Email <span class="required">*</span></label>										
+                                            <input type="email" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <div class="checkout-form-list">
+                                            <label>Số điện thoại  <span class="required">*</span></label>										
+                                            <input type="text" placeholder="">
+                                        </div>
+                                    </div>							
+                                </div>
+                                <div class="different-address">
+                                    <div class="order-notes">
+                                        <div class="checkout-form-list">
+                                            <label>Ghi chú</label>
+                                            <textarea placeholder="" rows="10" cols="30" id="checkout-mess"></textarea>
+                                        </div>									
+                                    </div>
+                                </div>													
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-12">
+                            <div class="your-order">
+                                <h3>Chi tiết đơn hàng</h3>
+                                <?php
+                                $total = 0;
+                                ?>
+                                <div class="your-order-table table-responsive">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="product-name">Sản phầm</th>
+                                                <th class="product-total">Thành tiền</th>
+                                            </tr>							
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($cart as $k => $v): ?>
+                                                <?php
+                                                if (!is_numeric($k)) {
+                                                    continue;
+                                                }
+                                                $subTotal = $v['price'] * $v['qty'];
+                                                $total += $subTotal;
+                                                $subTotal = number_format($subTotal);
+                                                $url = $BASE_URL . '/san-pham' . $v['url'];
+                                                $image = $v['image'];
+                                                $price = number_format($v['price']);
+                                                $name = $v['name'];
+                                                $qty = $v['qty'];
+                                                $id = $v['id'];
+                                                ?>
+                                            <tr class="cart_item">
+                                                <td class="product-name">
+                                                    <?php echo $name;?> <strong class="product-quantity"> × <?php echo $qty;?></strong>
+                                                </td>
+                                                <td class="product-total">
+                                                    <span class="amount"><?php echo $subTotal;?>đ</span>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach;?>
+                                            
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="order-total">
+                                                <th>Tổng tiền</th>
+                                                <td><strong><span class="amount"><?php echo number_format($total);?>đ</span></strong>
+                                                </td>
+                                            </tr>								
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="payment-method">
+                                    <div class="payment-accordion">
+                                        <div class="collapses-group">
+                                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading" role="tab" id="headingOne">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                Phương thức thanh toán
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                                        <div class="panel-body">
+                                                            <p>Thanh toán khi nhận hàng(COD).</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="order-button-payment">
+                                        <input type="submit" value="Đặt hàng">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- checkout-area-end -->
