@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="<?php echo $BASE_URL;?>/thanh-toan" method="POST">
+                <form action="<?php echo $BASE_URL;?>/dat-hang" method="POST">
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-12">
                             <div class="checkbox-form">						
@@ -26,25 +26,25 @@
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <div class="checkout-form-list">
                                             <label>Họ và tên <span class="required">*</span></label>										
-                                            <input type="text" placeholder="">
+                                            <input type="text" name="name" placeholder="" required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <div class="checkout-form-list">
                                             <label>Địa chỉ <span class="required">*</span></label>
-                                            <input type="text" placeholder="">
+                                            <input type="text" name="address" placeholder="" required="required">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="checkout-form-list">
-                                            <label>Email <span class="required">*</span></label>										
-                                            <input type="email" placeholder="">
+                                            <label>Email</label>
+                                            <input type="email" name="email" type="email" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="checkout-form-list">
                                             <label>Số điện thoại  <span class="required">*</span></label>										
-                                            <input type="text" placeholder="">
+                                            <input type="text" name="phone" placeholder=""  required="required">
                                         </div>
                                     </div>							
                                 </div>
@@ -52,7 +52,7 @@
                                     <div class="order-notes">
                                         <div class="checkout-form-list">
                                             <label>Ghi chú</label>
-                                            <textarea placeholder="" rows="10" cols="30" id="checkout-mess"></textarea>
+                                            <textarea placeholder="" rows="10" cols="30" name="note" id="checkout-mess"></textarea>
                                         </div>									
                                     </div>
                                 </div>													
@@ -120,7 +120,7 @@
                                                             </a>
                                                         </h4>
                                                     </div>
-                                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                                    <div id="collapseOne" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne">
                                                         <div class="panel-body">
                                                             <p>Thanh toán khi nhận hàng(COD).</p>
                                                         </div>

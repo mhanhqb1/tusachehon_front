@@ -7615,3 +7615,11 @@ p.lost-password a:hover {
 }
 
 /*------ end Compare Page Wrapper -----*/
+.checkout-complete {
+    padding: 100px 0;
+}
+.checkout-complete > a {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
