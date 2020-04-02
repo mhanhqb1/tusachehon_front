@@ -1357,6 +1357,9 @@
     .modal-pro-content h3 {
         font-size: 24px;
     }
+    .banner-area.banner-res-large {
+        display: none;
+    }
     
 }
 
