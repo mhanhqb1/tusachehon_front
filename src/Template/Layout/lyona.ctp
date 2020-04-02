@@ -61,9 +61,12 @@ $_time = time();
             var action = '<?php echo $action; ?>';
             var _csrfToken = '<?php echo $this->request->getParam('_csrfToken'); ?>';
         </script>
+        
+        <?php echo !empty($_settings['company']['script_header']) ? $_settings['company']['script_header'] : '';?>
     </head>
 
     <body class="home option2 insCustomer">
+        <?php echo !empty($_settings['company']['script_body']) ? $_settings['company']['script_body'] : '';?>
         <?php echo $this->element('Layout/header'); ?>
         <?php echo $this->fetch('content'); ?>
         <?php echo $this->element('Layout/footer'); ?>
@@ -98,5 +101,6 @@ $_time = time();
         <script src="<?php echo $BASE_URL;?>/js/plugins.js"></script>
         <!-- main js -->
         <script src="<?php echo $BASE_URL;?>/js/main.js?<?php echo $time;?>"></script>
+        <?php echo !empty($_settings['company']['script_footer']) ? $_settings['company']['script_footer'] : '';?>
     </body>
 </html>
