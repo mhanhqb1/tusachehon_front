@@ -93,7 +93,7 @@
                     <p>Bộ sách phát triển thùy trán, thùy não giúp trẻ tư duy và sự sáng tạo của con sẽ được khai thác tối đa, giúp bé làm quen với các con số một cách dễ dàng...</p>
                 </div>
                 <div class="banner-img-2">
-                    <a href="#"><img src="<?php echo $BASE_URL; ?>/images/kuma.png" alt="banner" /></a>
+                    <a href="https://tusachehon.com/san-pham/kuma-lam-quen-voi-mon-toan-4-cuon"><img src="<?php echo $BASE_URL; ?>/images/kuma.png" alt="banner" /></a>
                 </div>
             </div>
         </div>
